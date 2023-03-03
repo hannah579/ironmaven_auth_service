@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/")
 public class ServiceAPI {
-
+	
 	public static long instanceId = new Random().nextInt();
 	public static int count = 0;
 

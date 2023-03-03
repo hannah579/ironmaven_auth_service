@@ -26,6 +26,8 @@ public class TokenAPI {
 	//private static Key key = AuthFilter.key;	
 	public static Token appUserToken;
 	
+	String dataApiHost = "localhost:8080";
+	
 	@GetMapping
 	public String getAll() {
 		return "jwt-fake-token-asdfasdfasfa".toString();
@@ -106,12 +108,12 @@ public class TokenAPI {
     
 	private Customer getCustomerByNameFromCustomerAPI(String username) {
 		try {
-//			String apiHost = System.getenv("API_HOST");
-//			if(apiHost == null) {
-//				apiHost = this.dataApiHost;
-//			}
-//			URL url = new URL("http://" + apiHost + "/api/customers/byname/"+username);
-			URL url = new URL("http://localhost:8080/api/customers/byname/" + username);
+			String apiHost = System.getenv("API_HOST");
+			if(apiHost == null) {
+				apiHost = this.dataApiHost;
+			}
+			URL url = new URL("http://" + apiHost + "/api/customers/byname/"+username);
+			//URL url = new URL("http://localhost:8080/api/customers/byname/" + username);
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Accept", "application/json");
