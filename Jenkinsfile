@@ -1,6 +1,6 @@
 node {
     stage ("Checkout AuthService"){
-        git branch: 'main', url: 'https://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@github.com/hannah579/ironmaven_auth_service.git'
+        git branch: 'main', url: 'https://github.com/hannah579/ironmaven_auth_service.git'
     }
     
     stage ("Gradle Build - AuthService") {
