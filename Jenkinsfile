@@ -12,16 +12,16 @@ node {
     }
 	
 	stage ("Containerize the app-docker build - AuthApi") {
-        sh 'docker build --rm -t mcc-auth:v1.0 .'
+        sh 'docker build --rm -t authapi:v1.0 .'
     }
     
     stage ("Inspect the docker image - AuthApi"){
-        sh "docker images mcc-auth:v1.0"
-        sh "docker inspect mcc-auth:v1.0"
+        sh "docker images authapi:v1.0"
+        sh "docker inspect authapi:v1.0"
     }
     
     stage ("Run Docker container instance - AuthApi"){
-        sh "docker run -d --rm --name mcc-auth -p 8081:8081 mcc-auth:v1.0"
+        sh "docker run -d --rm --name auth -p 8081:8081 authapi:v1.0"
      }
     
     stage('User Acceptance Test - AuthService') {
@@ -33,7 +33,7 @@ node {
 	  if(response=="Yes") {
 	  
 	    stage('Release - AuthService') {
-	      sh 'docker stop mcc-auth'
+	      sh 'docker stop auth'
 	      sh 'echo MCC AuthService is ready to release!'
 	    }
 	  }
