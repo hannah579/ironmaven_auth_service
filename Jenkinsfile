@@ -39,7 +39,6 @@ node {
 	      sh "kubectl expose deployment auth --type=LoadBalancer --port=8081"
 	      sh 'kubectl describe deployment/auth'
 	    }
-	  }
     }
     
     stage("View Production Deployment"){
