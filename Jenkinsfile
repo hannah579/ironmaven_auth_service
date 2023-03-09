@@ -44,7 +44,5 @@ node {
     
     stage("View Production Deployment"){
     	sh "kubectl get all"
-		sh "kubectl get services"
-		sh "minikube service list"
     }
 }
