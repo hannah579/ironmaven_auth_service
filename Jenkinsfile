@@ -35,7 +35,7 @@ node {
 	    stage('Create and Expose Kubernetes Deployment - AuthApi') {
 	      sh "docker stop authapi"
 	      sh "kubectl create deployment auth --image=authapi:v1.0"
-	      sh "set env deployment/auth API_HOST=\$(kubectl get service/data -o jsonpath='{.spec.clusterIP}):8080"
+	      sh "set env deployment/auth API_HOST=\$(kubectl get service/data -o jsonpath='{.spec.clusterIP}'):8080"
 	      sh "kubectl expose deployment auth --type=LoadBalancer --port=8081"
 	      sh "kubectl describe deployment/auth"
 	    }
